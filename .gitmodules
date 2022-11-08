@@ -1,0 +1,3 @@
+[submodule "crossplane-prod-ready-eks"]
+	path = crossplane-prod-ready-eks
+	url = git@github.com:cem-altuner/crossplane-prod-ready-eks.git

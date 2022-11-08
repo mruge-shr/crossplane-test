@@ -1,0 +1,22 @@
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: VPC
+metadata:
+  name: {{ include "eks.fullname" . }}
+  labels:
+    name: {{ include "eks.fullname" . }}
+spec:
+  forProvider:
+    region: {{ .Values.region }}
+    cidrBlock: {{ .Values.cidrBlock }} 
+    enableDnsSupport: true
+    enableDnsHostNames: true
+    tags: 
+    - key: Name
+      value: {{ include "eks.fullname" . }}
+    - key: helmReleaseName
+      value: {{ include "eks.fullname" . }}
+    {{- with .Values.tags }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  providerConfigRef:
+    name: {{ include "eks.fullname" . }}-aws

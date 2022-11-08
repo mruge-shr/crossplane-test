@@ -1,0 +1,21 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: eksclusters.k8s.shred.cloud
+  labels:
+    provider: aws
+spec:
+  compositeTypeRef:
+    apiVersion: k8s.shred.cloud/v1alpha1
+    kind: ekscluster
+  resources:
+    - name: vpc
+      base:
+        apiVersion: ec2.aws.crossplane.io/v1beta1
+        kind: VPC
+        spec:
+          forProvider:
+            region: us-east-1
+            cidrBlock: 192.168.0.0/16
+            enableDnsSupport: true
+            enableDnsHostNames: true

@@ -1,0 +1,7 @@
+region: us-east-2
+cidrBlock: 10.10.0.0/16
+tags:
+  - key: POC
+    value: N/A
+  - key: Customer
+    value: N/A
